@@ -119,7 +119,7 @@ in which it would display:
 
 > Find the secret password (flag) of the above-mentioned underground organization!
 
-After previously at number 8, stated that the password of the encrypted file is **Ada, klo nggak salah passwordnya itu pake nama karakter anime yang kembar lima itu lho, jangan lupa pake huruf kecil semua**, after that, we try to use each name of the each character of that anime, and we found the password was **nakano**, we use ubuntu to decrypt the file, and the result was :
+After previously at number 8, stated that the password of the encrypted file is **'Ada, klo nggak salah passwordnya itu pake nama karakter anime yang kembar lima itu lho, jangan lupa pake huruf kecil semua'**, after that, we try to use each name of the each character of that anime, and we found the password was **nakano**, we use ubuntu to decrypt the file, and the result was :
 
 ![Result](Contents/no10.png)
 
