@@ -93,7 +93,10 @@ if we were using an Windows OS, we could open the Command Prompt and use the `ip
 
 > Browse the flow of packets in the given .pcap file, look for useful information in the form of a conversation between two students regarding cheating in practicum activities. The conversation is reported to use a network protocol with a high level of reliability in its data exchange so you need to apply a filter with that protocol.
 
-Since we know there are only two perpetrators that are having a discussion, by common sense there should be two IP Addresses that are going back-and-forward speaking to each other. From the .pcapng file we can see that there 2 frequently occuring IPs which are `127.0.0.1` & `127.0.1.1`, from this we can use the filter `tcp.port == 9002` to only display from the two prepertators. But we still need to filter out non-discussion capture, this is done by putting a `tcp.flags.push == 1` as that capture with data in it uses the push flag. As such we would get the following:
+first, we input this code  into the filter:  
+`(tcp.flags.syn == 1 && tcp.flags.ack == 0) || (tcp.flags.syn == 1 && tcp.flags.ack == 1)`
+
+then search for the network that shown [SYN,ACK] in the network, and click follow network, then we can get the result :
 
 ![Result](Contents/no8.png)
 
@@ -101,26 +104,16 @@ Since we know there are only two perpetrators that are having a discussion, by c
 
 > There are reports of file exchanges made by the two students in the conversations obtained, look for the file in question! To facilitate reporting to superiors, name the file found in the format **[group_name].des3** and save the output file with the name **“flag.txt”.**
 
-Using the IPs of the two perpetrator ,`127.0.0.1` & `127.0.1.1`, knowing that one of them is the supplier (`127.0.1.1`) we can find any clue to lead where the supplier would send its file. By following the conversation using the previous display filter we would find the following:
+After we input this code previously : `(tcp.flags.syn == 1 && tcp.flags.ack == 0) || (tcp.flags.syn == 1 && tcp.flags.ack == 1)`
 
-![Incriminating Lead 1](Contents/no9_1.png)
+then, we search in the network that has the info of COMPLETE_DATA[31], then follow that network
 
-![Incrimintating Lead 2](Contents/no9_2.png)
-
-From this we know that the file would be encrypted under a **.des3** file format (as so, it would be most likely be gibberish or salted in its raw form.), and that it would be sent over **"9002"** which is a port number. Using this newfound knowledge, we could use the following display filter:
-
-`ip.src == 127.0.1.1 && tcp.port == 9002 && tcp.flags.push == 1`
+after that, change  the code into raw, and download that data using the format **[group_name].des3**
 
 in which it would display:
 
 ![File Transmission Captured](Contents/no9_3.png)
 
-here we would find the salted data in which is the file in question. As we are asked to export the content to a file, we would export the **raw data** from WireShark and export it to a file named **I04.des3**.
-
-The data in its raw form:<br>
-`53616c7465645f5fbf3adfafa4884228ce051bd1f6c12445a416e84b29c1d63c3c081b8bb9fcf566209587961317e142ff4734e4da2bcbcf`
-
-the output of the decryption (**flag.txt**) will be discussed in the next question.
 
 ### Question 10
 
