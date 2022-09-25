@@ -115,7 +115,7 @@ in which it would display:
 
 ![File Transmission Captured](Contents/no9_3.png)
 
-here we would find the salted data in which is the file in question. As we are asked to export the content to a file, we would export the **raw data** from WireShark and export it to a file named **I01.des3**.
+here we would find the salted data in which is the file in question. As we are asked to export the content to a file, we would export the **raw data** from WireShark and export it to a file named **I04.des3**.
 
 The data in its raw form:<br>
 `53616c7465645f5fbf3adfafa4884228ce051bd1f6c12445a416e84b29c1d63c3c081b8bb9fcf566209587961317e142ff4734e4da2bcbcf`
