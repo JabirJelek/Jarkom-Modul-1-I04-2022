@@ -1,18 +1,18 @@
-# Jarkom-Modul-1-I01-2022
+# Jarkom-Modul-1-I04-2022
 
-**Computational Networking Module 1 Practicum Report**
+**Module 1 Practicum Report**
 
 Group Members:
 
-+ Adam Satria Adidarma - 05111942000001
-+ Muhammad Fatih Akbar - 5025201117
-+ Rangga Aulia Pradana - 5025201154
++ Farzana Afifah Razak - 5025201130
++ Muhammad Azka Aysar Santoso - 5025201150
++ Raihan Farid - 5025201141
 
 
 ## Important Links
 
 + [Questions](https://docs.google.com/document/d/1e5fXdleV59vFthVeK0O5WfmuOYV6xi6WkpHsZEiBofE/edit?usp=sharing)
-+ [Resources](https://drive.google.com/drive/folders/1mj1IKV1_NPWtz7AcIytw4DK8vC9fZ1Ox?usp=sharing)
++ [Resources](https://docs.google.com/document/d/1WcElh3NxoqVzibwBwo-fZ0l6eK3pEtx7gW60r2KSZMM/edit)
 
 ## Table of Contents
 
@@ -46,7 +46,7 @@ With the help of wireshark filter _tcp.host_, we can see which server are using 
 
 > Ishaq was confused looking for TA topics for this semester, then he came to the monta website and found the topic details on the website “monta.if.its.ac.id”, what TA title did Ishaq open?
 
-By using Ishaq's ip address of `103.94.189.5`, we can filter his network traffic by searching a tcp protocol that is using a GET request which contains topik in the request. We can see in our experiment there is a GET method which request `/index.php/topik/detailTopik/194 HTTP/1.1` by Ishaq.
+By using Ishaq's ip address of `103.94.189.5`, we can filter his network traffic by searching a tcp protocol that is using a GET request which contains topik in the request.
 
 ![Result](Contents/no2_1.png)
 
@@ -57,35 +57,35 @@ Therefore, we can conclude that this is the topic that Ishaq open. Using our own
 
 > Filter so that wireshark only shows packets going to port 80!
 
-filtering packets that only going to port 80 can be easily done by applying command `tcp.dstport == 80` . by using this command this will sort out all the packets that are only going or assigned to go to port 80 <br>
+filtering packets that only going to port 80 can be easily done by applying command `tcp.dstport == 80` . <br>
 ![Result](Contents/no3.png)
 
 ### Question 4
 
 > Filter so that wireshark only picks up packets coming from port 21!
 
-in order to get information about packets that only coming from port 21 in our network traffic we can do that by applying filter by using command `tcp.srcport == 21` and thus will catch all the packets that are coming from port 21 <br>
+in order to get information about packets that only coming from port 21 in our network traffic we can do that by applying filter by using command `tcp.srcport == 21` <br>
 ![Result](Contents/no4.png)
 
 ### Question 5
 
 > Filter so that wireshark only picks up packets coming from port 443!
 
-We can filter our network traffic coming only from port 443 by using the command `tcp.srcport == 443`. Source port is where the packet/connection originated. Therefore, by using this filter, we can view packets coming only from the port _443_.<br>
+We can filter our network traffic coming only from port 443 by using the command `tcp.srcport == 443`.<br>
 ![Result](Contents/no5.png)
 
 ### Question 6
 
 > Filter so that wireshark only shows packets going to lipi.go.id !
 
-To see packets only going to a specific domain, we used `http.host == lipi.go.id`. This filter will show us http requests going to this specific domain which in our case there is only one device trying to send a GET request to this domain from `192.168.0.27`.<br>
+To see packets only going to a specific domain, we used `http.host == lipi.go.id`.<br>
 ![Result](Contents/no6.png)
 
 ### Question 7
 
 > Filter so that wireshark only picks up packets coming from your ip!
 
-if we were using an Windows OS, we could open the Command Prompt and use the `ipconfig` to find out our current IP address (IPv4), after that we could just use `ip.src` in wireshark followed by our IP address to get the followin result:
+if we were using an Windows OS, we could open the Command Prompt and use the `ipconfig` to find out our current IP address (IPv4), after that we could just use `ip.src`:
 
 ![Result](Contents/no7.png)
 
@@ -93,7 +93,7 @@ if we were using an Windows OS, we could open the Command Prompt and use the `ip
 
 > Browse the flow of packets in the given .pcap file, look for useful information in the form of a conversation between two students regarding cheating in practicum activities. The conversation is reported to use a network protocol with a high level of reliability in its data exchange so you need to apply a filter with that protocol.
 
-Since we know there are only two perpetrators that are having a discussion, by common sense there should be two IP Addresses that are going back-and-forward speaking to each other. From the .pcapng file we can see that there 2 frequently occuring IPs which are `127.0.0.1` & `127.0.1.1`, from this we can use the filter `ip.src == 127.0.1.1 && tcp.port == 9002` to only display from the two prepertators. But we still need to filter out non-discussion capture, this is done by putting a `tcp.flags.push == 1` as that capture with data in it uses the push flag. As such we would get the following:
+Since we know there are only two perpetrators that are having a discussion, by common sense there should be two IP Addresses that are going back-and-forward speaking to each other. From the .pcapng file we can see that there 2 frequently occuring IPs which are `127.0.0.1` & `127.0.1.1`, from this we can use the filter `tcp.port == 9002` to only display from the two prepertators. But we still need to filter out non-discussion capture, this is done by putting a `tcp.flags.push == 1` as that capture with data in it uses the push flag. As such we would get the following:
 
 ![Result](Contents/no8.png)
 
