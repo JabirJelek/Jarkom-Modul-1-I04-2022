@@ -112,7 +112,7 @@ after that, change  the code into raw, and download that data using the format *
 
 in which it would display:
 
-![File Transmission Captured](Contents/no9_3.png)
+![Result](Contents/no9.png)
 
 
 ### Question 10
